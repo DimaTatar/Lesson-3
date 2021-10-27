@@ -25,22 +25,29 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uap-O2-P43">
                                                 <rect key="frame" x="0.0" y="0.0" width="333.33333333333331" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bR2-tU-Z7U"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passford" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F08-1C-UKT">
                                                 <rect key="frame" x="0.0" y="76" width="333.33333333333331" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HoX-Bg-4bQ"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phP-2K-vXq">
-                                        <rect key="frame" x="132.33333333333334" y="145" width="95.666666666666657" height="44"/>
+                                        <rect key="frame" x="135.33333333333334" y="145" width="89.666666666666657" height="44"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                        <buttonConfiguration key="configuration" style="plain" title="Log In">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="actionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xvL-HL-2oW"/>
                                             <segue destination="zAz-JV-dYE" kind="presentation" id="4LX-r6-PCO"/>
                                         </connections>
                                     </button>
@@ -85,6 +92,10 @@
                             <constraint firstItem="dQC-aC-hiV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.855072" id="v4g-L2-DV7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passfordName" destination="F08-1C-UKT" id="Gqq-va-5T8"/>
+                        <outlet property="userName" destination="uap-O2-P43" id="xp6-ac-3J4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,19 +131,21 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSf-QZ-4Z7">
                                         <rect key="frame" x="0.0" y="575.66666666666663" width="105.33333333333333" height="44"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Log out">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="pressLogOut" destination="zAz-JV-dYE" eventType="touchUpInside" id="NAb-IO-AAq"/>
+                                            <action selector="pressLogOut" destination="zAz-JV-dYE" eventType="touchUpInside" id="HOq-T5-7Ys"/>
+                                            <segue destination="6Ku-V1-Qd3" kind="unwind" unwindAction="unwindFor:" id="pO1-O1-esh"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hct-Vv-IGJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="Yke-vv-ulF" firstAttribute="centerY" secondItem="AR1-CP-OWo" secondAttribute="centerY" id="Uaf-lr-gDC"/>
                             <constraint firstItem="Yke-vv-ulF" firstAttribute="centerX" secondItem="AR1-CP-OWo" secondAttribute="centerX" id="wH6-aa-Ifh"/>
@@ -143,13 +156,20 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfE-Pq-swJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6Ku-V1-Qd3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="733" y="55"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
